@@ -1,0 +1,68 @@
+[System]
+Name='health_evaluator'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Height'
+Range=[3.2 8]
+NumMFs=5
+MF1='very-short':'trapmf',[2.13 3.09 3.8 4.2]
+MF2='short':'trapmf',[3.8 4.2 4.8 5.3]
+MF3='medium':'trapmf',[4.8 5.3 6 6.5]
+MF4='tall':'trapmf',[6 6.5 7.2 7.6]
+MF5='very-tall':'trapmf',[7.2 7.6 8.144 9.104]
+
+[Input2]
+Name='Weight'
+Range=[110 400]
+NumMFs=5
+MF1='very-slim':'trapmf',[44.8 103 135 165]
+MF2='slim':'trapmf',[135 165 190 220]
+MF3='medium':'trapmf',[190 220 250 275]
+MF4='heavy':'trapmf',[250 275 308 359.292343387471]
+MF5='very-heavy':'trapmf',[310 351.218097447796 407 465]
+
+[Output1]
+Name='Health'
+Range=[0 1]
+NumMFs=4
+MF1='unhealthy':'trimf',[0 0.2 0.4]
+MF2='less-healthy':'trimf',[0.2 0.4 0.6]
+MF3='somewhat-healthy':'trimf',[0.4 0.6 0.8]
+MF4='healthy':'trimf',[0.6 0.8 1]
+
+[Rules]
+1 1, 4 (1) : 1
+1 2, 3 (1) : 1
+1 3, 2 (1) : 1
+1 4, 1 (1) : 1
+1 5, 1 (1) : 1
+2 1, 3 (1) : 1
+2 2, 4 (1) : 1
+2 3, 3 (1) : 1
+2 4, 2 (1) : 1
+2 5, 1 (1) : 1
+3 1, 2 (1) : 1
+3 2, 4 (1) : 1
+3 3, 4 (1) : 1
+3 4, 2 (1) : 1
+3 5, 1 (1) : 1
+4 1, 1 (1) : 1
+4 2, 3 (1) : 1
+4 3, 4 (1) : 1
+4 4, 3 (1) : 1
+4 5, 1 (1) : 1
+5 1, 1 (1) : 1
+5 2, 2 (1) : 1
+5 3, 4 (1) : 1
+5 4, 3 (1) : 1
+5 5, 2 (1) : 1
